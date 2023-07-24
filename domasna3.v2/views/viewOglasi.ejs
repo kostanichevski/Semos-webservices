@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <title>OGLASI</title>
+  </head>
+  <body>
+    <h1><%= tip %></h1>
+    <h2><%= ime %></h2>
+    <% if(oglasi.length === 0) { %>
+    <p>No golasi found</p>
+    <%} else {%> <%oglasi.forEach(oglas => {%>
+    <div class="oglas">
+      <h2 class="oglas-type"><%= oglas.type %></h2>
+      <p><%= oglas.price %></p>
+      <div class="oglas-name">
+        <p>Name: <%= oglas.name %></p>
+      </div>
+    </div>
+    <%}); %> <%} %>
+
+    <form action="/createOglas" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" />
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" />
+      <label for="km">KM:</label>
+      <input type="number" id="km" name="km" />
+      <label for="kvadratura">Kvadratura:</label>
+      <input type="number" id="kvadratura" name="kvadratura" />
+      <button class="oglas-button" type="submit" name="createOglas">
+        Postiraj oglas
+      </button>
+    </form>
+  </body>
+</html>
